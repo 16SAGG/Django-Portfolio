@@ -8,5 +8,12 @@
 </head>
 <body>
     <h1>Posts</h1>
+    {% for p in myPosts%}
+        <h2>{{p.title}}</h2>
+        <img src="{{p.image.url}}" alt="{{p.title}}">
+        <p>{{p.description|striptags|truncatechars:100}}</p>
+        <p>{{p.date|date:'M d Y'}}</p>
+        <a href="{% url 'blog:post_detail' p.id %}">{{p.title}}</a>
+    {% endfor%}
 </body>
 </html>

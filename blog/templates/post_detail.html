@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{myPost.title}}</title>
+</head>
+<body>
+    <h1>{{myPost.title}}</h1>
+    <img src="{{myPost.image.url}}" title="{{myPost.title}}">
+    <p>{{myPost.description|safe}}</p>
+    <p>{{myPost.date|date:'M d Y'}}</p>
+    <a href="{% url 'blog:posts' %}">Volver</a>
+</body>
+</html>
