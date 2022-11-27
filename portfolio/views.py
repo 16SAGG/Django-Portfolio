@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from .models import projects
 
-# Create your views here.
+def home(request):
+    myProjects = projects.objects.all()
+    ctxt = {
+        'myProjects': myProjects,
+    }
+    return render(request, 'home.html', ctxt)
