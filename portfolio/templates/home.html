@@ -1,20 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome</h1>
-    {% for p in myProjects %}
-        <h2>{{p.title}}</h2>
-        <img src="{{p.image.url}}" alt="p.title">
-        <p>{{p.description}}</p>
-        {% if p.url %}
-            <a href="{{p.url}}">{{p.url}}</a>
-        {% endif%}
-    {% endfor %}
-</body>
-</html>
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock %}
+{% block content %}
+    <header class="row bg-black">
+        <div class="col-md-4">
+            <img src="{% static 'Samuel.jpg' %}" alt="Samuel Gonzalez" width="300px">
+        </div>
+        <div class="col-md-8 my-auto">
+            <h1>Hello world. I am <strong>Samuel Gonzalez</strong></h1>
+            <h3>I am Python backend developer.</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                Eos nemo eveniet deserunt nam dicta voluptatem accusamus aliquam 
+                alias dolores ut, laboriosam beatae odit asperiores, tempora quia
+                ducimus repudiandae similique delectus.
+            </p>
+        </div>
+    </header>
+    <div class="row my-4 text-center">
+        <h3>My Projects</h3>
+        {% for p in myProjects %}
+            <div class="col-md-4 p-4">
+                <div class="card bg-black card-project">
+                    <div class="card-body">
+                        <img src="{{p.image.url}}" alt="p.title" class="card-img-top">
+                        <h4 class="card-title">{{p.title}}</h2>
+                        <p class="card-text">{{p.description}}</p>
+                        {% if p.url %}
+                            <a href="{{p.url}}" class="btn btn-outline-light" target="_blank">{{p.url}}</a>
+                        {% endif%}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

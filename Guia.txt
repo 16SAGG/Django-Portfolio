@@ -1,0 +1,71 @@
+Superuser del sistema: sagg16
+clave: s#amu3425
+
+[*1*] Definicion del proyecto:
+
+[1] Crear un entorno virtual en el cmd:
+	python -m virtualenv venv
+[2] Activamos el entorno virtual accediendo a la carpeta venv/scripts y escribiendo:
+	activate.bat
+[3] Abrimos vs code en la carpeta principal del portafolio:
+	code .
+[4] Hacer que vs code reconozca el entorno: 
+	[1] Presionamos F1
+	[2] Seleccionamos python:select interpreter
+	[3] Seleccionamos el que diga venv
+[5] Abrimos la terminal
+	[1] Presionamos F1
+	[2] Seleccionamos ternimal: create new terminal
+[6] Instalamos Django:
+	pip install django
+[7] Creamos el proyecto:
+	django-admin startproject django_portfolio .
+
+[*2*] Inicio del proyecto:
+	[1] Creamos las apps:
+		python manage.py startapp blog
+		python manage.py startapp portfolio
+	[2] Avisamos a Django de que se han creado nuevas aplicaciones:
+		[1] Vamos a django_portfolio/settings.py
+		[2] Ubicamos INSTALLED_APPS
+		[3] agregamos nuestras apps
+	[3] Creacion de modelos:
+		[1] Vamos a models.py dentro de la carpeta de una app
+		[2] Definimos las clases de los modelos
+	[4] Hacemos la migracion de los modelos:
+		python manage.py makemigrations
+		python manage.py migrate
+	[5] Creación del usuario de la base de datos:
+		[1] Escribimos en el cmd:
+			python manage.py createsuperuser
+		[2] Llena el formulario
+
+	[6] Agrega los modelos al panel de control (admin):
+		[1] Dirigete a admin.py dentro de la carpeta de una app
+		[2] Añadimos los modelos de esa app
+	[7] Definimos la carpeta donde se van a almacenar los archivos de media:
+		[1] Vamos a django_portfolio/settings.py
+		[2] creamos una variable llamada MEDIA_ROOT
+		[3] creamos una variable llamada MEDIA_URL
+		[4] añadimos un complemento a urlpatterns en django_portfolio/urls.py:
+			[1] Importamos lo necesario:
+				from django.conf.urls.static import static
+				from django.conf import settings
+			[2] Añadimos el complemento:
+				urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+	[8] Creación de vistas:
+		[1] Creamos una carpeta 'templates' en cada app
+		[2] Creamos un html principal
+		[3] Asignamos ese html a una vista en 'views.py' de la app
+	[9] Asignar urls:
+		[1] Creamos un archivo 'urls.py' en cada app
+		[2] Vamos a django_portfolio/urls.py
+		[3] Añadimos la importacion:
+			from django.urls import include
+		[4] Añadimos una direccion para cada app
+	[10] Url dinamica para blog:
+		[1] Creamos una nueva direccion en blog/urls.py, esta url recibira la id de la url como parametro
+		[2] 
+
+
+	
